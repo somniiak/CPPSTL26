@@ -2,10 +2,9 @@
 #include <print>
 
 template <int Cur, int Max, typename Prev>
-void harmonic()
+constexpr void harmonic()
 {
     using Next = std::ratio_add<Prev, std::ratio<1, Cur>>::type;
-
     std::println("H_{} = {} / {}", Cur, Next::num, Next::den);
 
     if constexpr (Cur < Max)
