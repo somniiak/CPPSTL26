@@ -27,10 +27,8 @@ void squareMatrix(std::array<std::array<T, N>, N>& A)
     {
         for (std::size_t j = 0; j < N; j++)
         {
-            const T aij = A[i][j];
-
             for (std::size_t k = 0; k < N; k++)
-                squared[i][j] += aij * A[i][k];
+                squared[i][j] += A[i][k] * A[k][j];
         }
     }
 
