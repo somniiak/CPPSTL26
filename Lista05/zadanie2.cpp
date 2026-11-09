@@ -125,7 +125,7 @@ std::forward_list<Symbol> to_postfix(const std::forward_list<Symbol>& infix)
         if (t == Token::NUM || t == Token::CONST || t == Token::VAR)
         {
             if (!expect_operand)
-                throw std::invalid_argument("Dwa operandy pod rząd, nadmierne: " + s.getName().value());
+                throw std::invalid_argument("Nieoczekiwany operand (brakuje operatora): " + s.getName().value());
 
             add(s);
             expect_operand = false;
@@ -134,7 +134,7 @@ std::forward_list<Symbol> to_postfix(const std::forward_list<Symbol>& infix)
         else if (t == Token::FUN)
         {
             if (!expect_operand)
-                throw std::invalid_argument("Po otwarciu nawiasu funkcji nie może być operatora: " + s.getName().value());
+                throw std::invalid_argument("Nieoczekiwana funkcja (brakuje operatora): " + s.getName().value());
 
             stack.push(s);
             after_fun = true;
@@ -244,13 +244,13 @@ std::string to_string(const std::forward_list<Symbol>& list)
 
 int main()
 {
-    Parser par = Parser();
+    Parser par;
 
     std::vector<std::string> examples = {
         "(5 * (2 + 1)) - 3",
         "max(1 + 2, 3 * 4)",
         "min(5 + 2 6) - 7",
-        "min(5 + 2.6) - 7",
+        "min(1 + 5 + 2.6) - 7",
     };
 
     std::vector<std::pair<std::string, std::string>> results;
