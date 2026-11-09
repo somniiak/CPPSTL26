@@ -10,7 +10,7 @@
 
 bool is_letters (const std::string& str) {
     return !str.empty() && std::all_of(str.begin(), str.end(),
-    [](unsigned char c) { return std::isalpha(c); });
+    [](char c) { return std::isalpha(c); });
 }
 
 class DynamicGraph

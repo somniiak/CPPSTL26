@@ -50,28 +50,28 @@ class Lexer
         };
 
         auto skip_digits = [&] {
-            while (cur < end && std::isdigit(static_cast<unsigned char>(*cur)))
+            while (cur < end && std::isdigit(*cur))
                 cur++;
         };
 
         while (cur < end)
         {
-            if (std::isspace(static_cast<unsigned char>(*cur))) {
+            if (std::isspace(*cur)) {
                 cur++; continue;
             }
 
             char* start = cur;
 
             // Identyfikatory
-            if (std::isalpha(static_cast<unsigned char>(*cur)))
-                while (cur < end && (std::isalnum(static_cast<unsigned char>(*cur))))
+            if (std::isalpha(*cur))
+                while (cur < end && (std::isalnum(*cur)))
                     cur++;
 
             // Liczby
-            else if (std::isdigit(static_cast<unsigned char>(*cur)))
+            else if (std::isdigit(*cur))
             {
                 skip_digits();
-                if (cur + 1 < end && *cur == '.' && std::isdigit(static_cast<unsigned char>(cur[1])))
+                if (cur + 1 < end && *cur == '.' && std::isdigit(cur[1]))
                 {
                     cur++;
                     skip_digits();

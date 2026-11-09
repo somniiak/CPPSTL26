@@ -75,7 +75,7 @@ class Parser
                 std::string str(token.data(), token.size());
                 const char c = str[0];
 
-                if (std::isdigit(static_cast<unsigned char>(c)))
+                if (std::isdigit(c))
                     add(Symbol(Token::NUM, std::stod(str), str));
                 else if (str == "(")
                     add(Symbol(Token::LPAR, std::nullopt, "("));
