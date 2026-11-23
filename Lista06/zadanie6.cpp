@@ -1,3 +1,4 @@
+#include <algorithm>
 #include <print>
 #include <stdexcept>
 #include <string>
@@ -53,7 +54,6 @@ int main()
       Person("Marek", "Kucharek", 35, 110, 1.68),
       Person("Ala", "Makota", 20, 70, 1.75),
     };
-
 
     // Iteracja po tupli
     // https://stackoverflow.com/a/54053084
